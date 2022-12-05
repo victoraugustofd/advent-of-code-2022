@@ -1,0 +1,12 @@
+# ignore everything
+*
+
+# accept directories
+!/*
+
+# accept extensions
+!src/*.py
+!resources/*.txt
+
+# accept files in root
+!/.gitignore
