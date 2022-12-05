@@ -3,7 +3,9 @@ from types import NoneType
 from src.utils import read_file
 
 WEIGHT = {"X": 1, "Y": 2, "Z": 3}  # Rock (A)  # Paper (B)  # Scissors (C)
-WIN_MAPPING = [("A", "Z"), ("B", "X"), ("C", "Y")]
+OPPONENT_CHOICES = {"A": "Rock", "B": "Paper", "C": "Scissors"}
+YOUR_CHOICES = {"X": "Rock", "Y": "Paper", "Z": "Scissors"}
+WIN_MAPPING = [("A", "Y"), ("B", "Z"), ("C", "X")]
 LOST = 0
 DRAW = 3
 WIN = 6
@@ -21,7 +23,7 @@ def execute_challenge_part_1(
             _get_round_score(WIN, result[1])
             if result in WIN_MAPPING
             else _get_round_score(DRAW, result[1])
-            if result[0] == result[1]
+            if OPPONENT_CHOICES.get(result[0]) == YOUR_CHOICES.get(result[1])
             else _get_round_score(LOST, result[1])
             for result in rps_tournament_results
         ]
